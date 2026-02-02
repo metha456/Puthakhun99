@@ -3,44 +3,795 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Puthakhun99</title>
+    <title>PUTHAKHUN99 - ร้านค้าออนไลน์</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            color: #333;
         }
-        
+
         .container {
-            text-align: center;
-            color: white;
-            padding: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
         }
-        
-        h1 {
-            font-size: 3rem;
+
+        header {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        header h1 {
+            color: #667eea;
+            font-size: 28px;
+        }
+
+        nav {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        nav button {
+            background: none;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            font-size: 14px;
+            color: #667eea;
+            font-weight: 600;
+            transition: all 0.3s;
+            border-radius: 5px;
+        }
+
+        nav button:hover {
+            background: #f0f0f0;
+        }
+
+        nav button.active {
+            background: #667eea;
+            color: white;
+        }
+
+        .auth-status {
+            font-size: 13px;
+            color: #666;
+        }
+
+        .content {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .section {
+            display: none;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            color: #333;
+            font-size: 14px;
+        }
+
+        input, textarea, select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+            font-family: inherit;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 5px rgba(102, 126, 234, 0.5);
+        }
+
+        button {
+            background: #667eea;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        button:hover {
+            background: #764ba2;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
             margin-bottom: 20px;
         }
-        
-        p {
-            font-size: 1.2rem;
-            opacity: 0.9;
+
+        .card {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+
+        .card h3 {
+            color: #667eea;
+            margin-bottom: 8px;
+            font-size: 16px;
+        }
+
+        .card p {
+            color: #666;
+            margin-bottom: 8px;
+            font-size: 13px;
+        }
+
+        .price {
+            font-size: 18px;
+            font-weight: 700;
+            color: #764ba2;
+            margin: 10px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            font-size: 13px;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background: #f0f0f0;
+            font-weight: 600;
+        }
+
+        .alert {
+            padding: 12px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            font-size: 13px;
+        }
+
+        .alert-info {
+            background: #d1ecf1;
+            color: #0c5460;
+            border-left: 4px solid #17a2b8;
+        }
+
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .two-column {
+                grid-template-columns: 1fr;
+            }
+
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            nav {
+                width: 100%;
+                gap: 5px;
+            }
+
+            nav button {
+                flex: 1;
+                min-width: 60px;
+                padding: 8px 10px;
+                font-size: 12px;
+            }
+        }
+
+        .stat-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            font-size: 13px;
+        }
+
+        .stat-box .value {
+            font-size: 24px;
+            font-weight: 700;
+            margin-top: 10px;
+        }
+
+        .error {
+            color: #dc3545;
+            font-size: 13px;
+            margin-top: 5px;
+        }
+
+        .success {
+            color: #28a745;
+            font-size: 13px;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>🚀 Puthakhun99</h1>
-        <p>ยินดีต้อนรับสู่เว็บไซต์ของฉัน!</p>
+        <header>
+            <h1>🛍️ PUTHAKHUN99</h1>
+            <nav>
+                <button class="nav-btn active" data-section="home">หน้าแรก</button>
+                <button class="nav-btn" data-section="products">สินค้า</button>
+                <button class="nav-btn" data-section="cart">ตะกร้า</button>
+                <button class="nav-btn" data-section="wallet">Wallet</button>
+                <button class="nav-btn" data-section="admin">แอดมิน</button>
+                <button class="nav-btn" data-section="setup">⚙️ Setup</button>
+                <button class="nav-btn" data-section="auth">ล็อกอิน</button>
+            </nav>
+            <div class="auth-status" id="authStatus">⚠️ ยังไม่ได้ล็อกอิน</div>
+        </header>
+
+        <div class="content">
+            <!-- Home -->
+            <section id="home" class="section active">
+                <h2>ยินดีต้อนรับสู่ PUTHAKHUN99</h2>
+                <p style="color: #666; margin: 20px 0;">ระบบการค้นขายออนไลน์อัจฉริยะที่มีคุณสมบัติครบครัน</p>
+
+                <div class="grid">
+                    <div class="stat-box">
+                        <h3>สินค้า</h3>
+                        <div class="value" id="totalProducts">0</div>
+                    </div>
+                    <div class="stat-box">
+                        <h3>ผู้ใช้</h3>
+                        <div class="value" id="totalUsers">0</div>
+                    </div>
+                    <div class="stat-box">
+                        <h3>คำสั่งซื้อ</h3>
+                        <div class="value" id="totalOrders">0</div>
+                    </div>
+                    <div class="stat-box">
+                        <h3>ยอดขาย</h3>
+                        <div class="value" id="totalRevenue">฿0</div>
+                    </div>
+                </div>
+
+                <div class="alert alert-info">
+                    <strong>⚠️ ต่อไปต้องทำ:</strong><br>
+                    1. ✅ สร้างไฟล์โครงการเรียบร้อย<br>
+                    2. ⏳ อัปเดต Firebase Config (Real Keys)<br>
+                    3. ⏳ Push ขึ้น GitHub<br>
+                    4. ⏳ Deploy บน Vercel
+                </div>
+            </section>
+
+            <!-- Products -->
+            <section id="products" class="section">
+                <h2>🛒 สินค้า</h2>
+                <button onclick="app.addProduct()" style="margin-bottom: 15px;">➕ เพิ่มสินค้า</button>
+                <div class="grid" id="productsList">
+                    <p style="color: #999;">ยังไม่มีสินค้า</p>
+                </div>
+            </section>
+
+            <!-- Cart -->
+            <section id="cart" class="section">
+                <h2>🛒 ตะกร้าสินค้า</h2>
+                <div id="cartStatus" style="color: #999; font-size: 13px;">ตะกร้าว่าง</div>
+                <div id="cartContent" style="display: none;">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>สินค้า</th>
+                                <th>ราคา</th>
+                                <th>จำนวน</th>
+                                <th>รวม</th>
+                                <th>ลบ</th>
+                            </tr>
+                        </thead>
+                        <tbody id="cartItems"></tbody>
+                    </table>
+                    <div style="text-align: right; margin-top: 15px;">
+                        <p style="font-size: 16px;"><strong>รวมทั้งสิ้น: <span id="cartTotal" style="color: #764ba2;">฿0</span></strong></p>
+                        <button onclick="app.checkout()">✓ ยืนยันการซื้อ</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Wallet -->
+            <section id="wallet" class="section">
+                <h2>💳 Wallet</h2>
+                <div class="two-column">
+                    <div>
+                        <div class="card">
+                            <h3>ยอดเงินคงเหลือ</h3>
+                            <div style="font-size: 28px; font-weight: 700; color: #764ba2; margin: 15px 0;" id="walletBalance">฿0</div>
+                            <button onclick="app.topup()">💰 เติมเงิน</button>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="card">
+                            <h3>ประวัติธุรกรรม</h3>
+                            <div id="transactionsList" style="max-height: 250px; overflow-y: auto; font-size: 12px;">
+                                <p style="color: #999;">ไม่มีธุรกรรม</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Admin -->
+            <section id="admin" class="section">
+                <h2>⚙️ แผงควบคุม Admin</h2>
+                <div id="adminContent" style="display: none;">
+                    <h3 style="margin-top: 20px;">📊 สถิติ</h3>
+                    <div class="grid">
+                        <div class="stat-box">
+                            <h3>รายได้วันนี้</h3>
+                            <div class="value" id="adminRevenue">฿0</div>
+                        </div>
+                        <div class="stat-box">
+                            <h3>คำสั่งซื้อ</h3>
+                            <div class="value" id="adminOrders">0</div>
+                        </div>
+                    </div>
+                </div>
+                <div id="adminAlert" class="alert alert-info">
+                    ต้องเป็น Admin เท่านั้นจึงจะเข้าใช้งาน
+                </div>
+            </section>
+
+            
+            <!-- Setup Section -->
+            <section id="setup" class="section">
+                <h2>🔧 Setup Firestore Data</h2>
+                <div class="alert alert-info">
+                    <strong>⚠️ Admin Only:</strong> Click button below to create Collections and add sample data
+                </div>
+                
+                <div style="margin-top: 20px;">
+                    <h3>📋 Create Collections</h3>
+                    <p style="color: #666; margin: 10px 0; font-size: 13px;">
+                        This will create all required collections (products, orders, carts, etc.) 
+                        and add sample data automatically.
+                    </p>
+                    <button onclick="app.setupFirestore()" style="background: #28a745; font-size: 16px; padding: 15px 30px;">
+                        ✨ Create Collections & Sample Data
+                    </button>
+                    <div id="setupStatus" style="margin-top: 20px;"></div>
+                </div>
+            </section>
+
+            <!-- Auth -->
+            <section id="auth" class="section">
+                <h2>🔐 ล็อกอิน/สมัครสมาชิก</h2>
+                <div class="two-column">
+                    <div>
+                        <h3>ล็อกอิน</h3>
+                        <div class="form-group">
+                            <label>อีเมล</label>
+                            <input type="email" id="loginEmail" placeholder="your@email.com">
+                        </div>
+                        <div class="form-group">
+                            <label>รหัสผ่าน</label>
+                            <input type="password" id="loginPassword" placeholder="••••••••">
+                        </div>
+                        <button onclick="app.login()">เข้าสู่ระบบ</button>
+                        <div id="loginError" class="error"></div>
+                    </div>
+                    <div>
+                        <h3>สมัครสมาชิก</h3>
+                        <div class="form-group">
+                            <label>อีเมล</label>
+                            <input type="email" id="registerEmail" placeholder="your@email.com">
+                        </div>
+                        <div class="form-group">
+                            <label>รหัสผ่าน</label>
+                            <input type="password" id="registerPassword" placeholder="••••••••">
+                        </div>
+                        <button onclick="app.register()">สมัครสมาชิก</button>
+                        <div id="registerError" class="error"></div>
+                    </div>
+                </div>
+                <button onclick="app.logout()" style="margin-top: 15px; background: #dc3545;">ออกจากระบบ</button>
+            </section>
+        </div>
     </div>
+
+    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore.js"></script>
+
+    <script>
+        // Firebase Configuration - ✅ CONFIGURED WITH REAL VALUES
+        const firebaseConfig = {
+            apiKey: "AIzaSyAX1CLMo9DtNEcVfSYnNWJltOr9-7o9Jmw",
+            authDomain: "puthakhun99.firebaseapp.com",
+            projectId: "puthakhun99",
+            storageBucket: "puthakhun99.firebasestorage.app",
+            messagingSenderId: "255093387312",
+            appId: "1:255093387312:web:8430bf772a9518ad17bdf5",
+            measurementId: "G-TB7TH5YL2D"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+        const db = firebase.firestore();
+
+        // App State
+        const app = {
+            user: null,
+            isAdmin: false,
+            cart: [],
+            wallet: 0,
+
+            init() {
+                console.log('🚀 PUTHAKHUN99 App Initialized');
+                
+                auth.onAuthStateChanged(u => {
+                    this.user = u;
+                    this.updateUI();
+                    if (u) this.loadUserData();
+                });
+
+                // Event listeners
+                document.querySelectorAll('.nav-btn').forEach(btn => {
+                    btn.addEventListener('click', () => this.showSection(btn.dataset.section));
+                });
+
+                this.loadProducts();
+            },
+
+            updateUI() {
+                const status = document.getElementById('authStatus');
+                if (this.user) {
+                    status.textContent = '✓ ' + this.user.email;
+                } else {
+                    status.textContent = '⚠️ ยังไม่ได้ล็อกอิน';
+                }
+                
+                document.getElementById('adminContent').style.display = 
+                    this.isAdmin ? 'block' : 'none';
+                document.getElementById('adminAlert').style.display = 
+                    this.isAdmin ? 'none' : 'block';
+            },
+
+            showSection(id) {
+                document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+                document.getElementById(id).classList.add('active');
+                document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+                document.querySelector(`[data-section="${id}"]`).classList.add('active');
+            },
+
+            async login() {
+                const email = document.getElementById('loginEmail').value;
+                const password = document.getElementById('loginPassword').value;
+                try {
+                    await auth.signInWithEmailAndPassword(email, password);
+                    document.getElementById('loginEmail').value = '';
+                    document.getElementById('loginPassword').value = '';
+                } catch (e) {
+                    document.getElementById('loginError').textContent = '❌ ' + e.message;
+                }
+            },
+
+            async register() {
+                const email = document.getElementById('registerEmail').value;
+                const password = document.getElementById('registerPassword').value;
+                try {
+                    await auth.createUserWithEmailAndPassword(email, password);
+                    await db.collection('users').doc(auth.currentUser.uid).set({
+                        email: email,
+                        role: 'customer',
+                        wallet: 0,
+                        createdAt: new Date()
+                    });
+                } catch (e) {
+                    document.getElementById('registerError').textContent = '❌ ' + e.message;
+                }
+            },
+
+            async logout() {
+                await auth.signOut();
+            },
+
+            async loadUserData() {
+                try {
+                    const doc = await db.collection('users').doc(this.user.uid).get();
+                    if (doc.exists) {
+                        const data = doc.data();
+                        this.wallet = data.wallet || 0;
+                        this.isAdmin = data.role === 'admin';
+                        document.getElementById('walletBalance').textContent = '฿' + this.wallet.toLocaleString();
+                    }
+                    this.updateUI();
+                    this.loadCart();
+                } catch (e) {
+                    console.error(e);
+                }
+            },
+
+            async loadProducts() {
+                try {
+                    const snapshot = await db.collection('products').get();
+                    const products = [];
+                    snapshot.forEach(doc => products.push({ id: doc.id, ...doc.data() }));
+                    
+                    const container = document.getElementById('productsList');
+                    if (products.length === 0) {
+                        container.innerHTML = '<p style="color: #999;">ยังไม่มีสินค้า</p>';
+                        return;
+                    }
+
+                    container.innerHTML = products.map(p => `
+                        <div class="card">
+                            <h3>${p.name}</h3>
+                            <p>${p.description || ''}</p>
+                            <div class="price">฿${(p.price || 0).toLocaleString()}</div>
+                            <p style="font-size: 11px; color: #999;">เหลือ: ${p.quantity || 0} ชิ้น</p>
+                            ${this.user ? `<button onclick="app.addToCart('${p.id}', '${p.name}', ${p.price})">🛒 เพิ่ม</button>` : ''}
+                        </div>
+                    `).join('');
+                    
+                    document.getElementById('totalProducts').textContent = products.length;
+                } catch (e) {
+                    console.error(e);
+                }
+            },
+
+            addToCart(id, name, price) {
+                const item = this.cart.find(i => i.id === id);
+                if (item) item.qty++;
+                else this.cart.push({ id, name, price, qty: 1 });
+                this.displayCart();
+            },
+
+            displayCart() {
+                const status = document.getElementById('cartStatus');
+                const content = document.getElementById('cartContent');
+                
+                if (this.cart.length === 0) {
+                    status.textContent = 'ตะกร้าว่าง';
+                    content.style.display = 'none';
+                    return;
+                }
+
+                status.textContent = `มีสินค้า ${this.cart.length} รายการ`;
+                content.style.display = 'block';
+
+                let total = 0;
+                const html = this.cart.map((item, i) => {
+                    const sum = item.price * item.qty;
+                    total += sum;
+                    return `
+                        <tr>
+                            <td>${item.name}</td>
+                            <td>฿${item.price}</td>
+                            <td>${item.qty}</td>
+                            <td>฿${sum}</td>
+                            <td><button onclick="app.removeFromCart(${i})" style="background: #dc3545; padding: 5px 10px; font-size: 11px;">ลบ</button></td>
+                        </tr>
+                    `;
+                }).join('');
+
+                document.getElementById('cartItems').innerHTML = html;
+                document.getElementById('cartTotal').textContent = '฿' + total.toLocaleString();
+            },
+
+            removeFromCart(i) {
+                this.cart.splice(i, 1);
+                this.displayCart();
+            },
+
+            async checkout() {
+                if (this.cart.length === 0) {
+                    alert('ตะกร้าว่าง');
+                    return;
+                }
+                
+                const total = this.cart.reduce((s, i) => s + i.price * i.qty, 0);
+                
+                if (this.wallet < total) {
+                    alert(`เงินไม่พอ (ต้องการ ฿${total})`);
+                    return;
+                }
+
+                try {
+                    await db.collection('orders').add({
+                        userId: this.user.uid,
+                        items: this.cart,
+                        total: total,
+                        createdAt: new Date()
+                    });
+
+                    this.wallet -= total;
+                    await db.collection('users').doc(this.user.uid).update({ wallet: this.wallet });
+
+                    this.cart = [];
+                    this.displayCart();
+                    alert('ซื้อสินค้าสำเร็จ!');
+                } catch (e) {
+                    alert('เกิดข้อผิดพลาด');
+                }
+            },
+
+            async loadCart() {
+                try {
+                    const doc = await db.collection('carts').doc(this.user.uid).get();
+                    if (doc.exists) this.cart = doc.data().items || [];
+                    this.displayCart();
+                } catch (e) {}
+            },
+
+            topup() {
+                const amount = prompt('กรอกจำนวนเงิน:');
+                if (!amount) return;
+                this.wallet += parseInt(amount);
+                db.collection('users').doc(this.user.uid).update({ wallet: this.wallet });
+                document.getElementById('walletBalance').textContent = '฿' + this.wallet.toLocaleString();
+            },
+
+            addProduct() {
+                if (!this.isAdmin) {
+                    alert('ต้องเป็น Admin เท่านั้น');
+                    return;
+                }
+
+            },
+
+            // Setup Firestore Collections and Sample Data
+            async setupFirestore() {
+                if (!this.isAdmin) {
+                    alert('ต้องเป็น Admin เท่านั้น');
+                    return;
+                }
+
+                const status = document.getElementById('setupStatus');
+                status.innerHTML = '<div class="loading" style="display: inline-block;"></div> Setting up...';
+
+                try {
+                    console.log('🚀 Creating collections...');
+
+                    // Create products collection with sample data
+                    const products = [
+                        {
+                            name: "iPhone 15 Pro",
+                            description: "สมาร์ทโฟนเรือธงจาก Apple",
+                            price: 39999,
+                            quantity: 50,
+                            category: "electronics",
+                            createdAt: new Date(),
+                            updatedAt: new Date()
+                        },
+                        {
+                            name: "Samsung Galaxy S24",
+                            description: "โทรศัพท์ยอดนิยมจาก Samsung",
+                            price: 35999,
+                            quantity: 75,
+                            category: "electronics",
+                            createdAt: new Date(),
+                            updatedAt: new Date()
+                        },
+                        {
+                            name: "iPad Air",
+                            description: "แท็บเล็ตขนาด 11 นิ้ว",
+                            price: 22999,
+                            quantity: 40,
+                            category: "electronics",
+                            createdAt: new Date(),
+                            updatedAt: new Date()
+                        },
+                        {
+                            name: "AirPods Pro",
+                            description: "หูฟังไร้สายพร้อม Noise Cancellation",
+                            price: 8999,
+                            quantity: 100,
+                            category: "accessories",
+                            createdAt: new Date(),
+                            updatedAt: new Date()
+                        },
+                        {
+                            name: "MacBook Pro 14\"",
+                            description: "แล็ปท็อป M3 Max สำหรับการทำงาน",
+                            price: 79999,
+                            quantity: 25,
+                            category: "computers",
+                            createdAt: new Date(),
+                            updatedAt: new Date()
+                        },
+                        {
+                            name: "Apple Watch Ultra",
+                            description: "นาฬิกาอัจฉริยะสำหรับนักกีฬา",
+                            price: 24999,
+                            quantity: 60,
+                            category: "accessories",
+                            createdAt: new Date(),
+                            updatedAt: new Date()
+                        }
+                    ];
+
+                    let productsAdded = 0;
+                    for (const product of products) {
+                        await db.collection('products').add(product);
+                        productsAdded++;
+                    }
+                    console.log(`✓ Added ${productsAdded} products`);
+
+                    // Create carts, orders, bookings, transactions collections (empty, will be created when used)
+                    status.innerHTML = `<div class="alert alert-success">
+                        <strong>✅ Setup Complete!</strong><br>
+                        • Created products collection with ${productsAdded} sample items<br>
+                        • Other collections (carts, orders, bookings, transactions) will be created when users use the app<br>
+                        <br>
+                        <strong>Next steps:</strong><br>
+                        1. Go to "สินค้า" tab to see products<br>
+                        2. Register a new user to test<br>
+                        3. Try shopping features
+                    </div>`;
+
+                } catch (error) {
+                    console.error('Error:', error);
+                    status.innerHTML = `<div class="alert" style="background: #f8d7da; color: #721c24; border-left: 4px solid #dc3545; padding: 12px;">
+                        ❌ Error: ${error.message}
+                    </div>`;
+                }
+            }
+                const name = prompt('ชื่อสินค้า:');
+                const price = parseInt(prompt('ราคา:'));
+                const qty = parseInt(prompt('จำนวน:'));
+                
+                if (name && price && qty) {
+                    db.collection('products').add({
+                        name, price, quantity: qty, description: '',
+                        createdAt: new Date()
+                    }).then(() => {
+                        alert('เพิ่มสินค้าสำเร็จ');
+                        this.loadProducts();
+                    });
+                }
+            }
+        };
+
+        // Start app
+        document.addEventListener('DOMContentLoaded', () => app.init());
+    </script>
 </body>
 </html>

@@ -1,0 +1,11 @@
+{
+  "buildCommand": "echo 'No build needed'",
+  "devCommand": "python -m http.server 3000",
+  "env": {
+    "FIREBASE_API_KEY": "@firebase_api_key",
+    "FIREBASE_PROJECT_ID": "puthakhun99",
+    "FIREBASE_APP_ID": "@firebase_app_id"
+  },
+  "regions": ["sin1", "bkk1"],
+  "public": true
+}

@@ -1,0 +1,31 @@
+{
+  "name": "puthakhun99",
+  "version": "1.0.0",
+  "description": "PUTHAKHUN99 - E-Commerce Platform with Firebase",
+  "main": "index.html",
+  "scripts": {
+    "dev": "open index.html",
+    "start": "open index.html",
+    "build": "echo 'No build step needed for SPA'",
+    "deploy": "vercel"
+  },
+  "keywords": [
+    "ecommerce",
+    "shopping",
+    "firebase",
+    "puthakhun99"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/YOUR_USERNAME/puthakhun99.git"
+  },
+  "bugs": {
+    "url": "https://github.com/YOUR_USERNAME/puthakhun99/issues"
+  },
+  "homepage": "https://puthakhun99.vercel.app"
+}
